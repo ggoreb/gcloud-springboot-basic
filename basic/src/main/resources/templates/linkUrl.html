@@ -1,0 +1,13 @@
+
+<th:block th:each="num : ${#numbers.sequence(startPage, endPage)}">
+	
+	<a th:text="${num}"
+	    th:href="@{/linkUrl(page=${num}, a=1)}"
+		th:if="${page} == ${num}"
+		style="text-decoration:none;"></a>
+		
+	<a th:href="@{/linkUrl(page=${num}, a=1)}" 
+		th:text="${num}" 
+		th:unless="${page} == ${num}"></a>
+
+</th:block>

@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<table border='1'>
+	<tr>
+		<td>아이디</td>
+		<td>이름</td>
+		<td>나이</td>
+	</tr>
+	<tr>
+		<td th:text="${user.userId}"></td>
+		<td th:text="${user.userName}"></td>
+		<td th:text="${user.userAge}"></td>
+	</tr>
+</table>
+
+아이디:<span>[[${user.userId}]]</span><br>
+이름:<span>[[${user.userName}]]</span><br>
+나이:<span>[[${user.userAge}]]</span><br>
+<hr>
+아이디:<span th:text="${user.userId}"></span><br>
+이름:<span th:text="${user.userName}"></span><br>
+나이:<span th:text="${user.userAge}"></span><br>
+<hr>
+아이디:<span data-th-text="${user.userId}"></span><br>
+이름:<span data-th-text="${user.userName}"></span><br>
+나이:<span data-th-text="${user.userAge}"></span><br>
+</html>

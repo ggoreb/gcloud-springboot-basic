@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+
+<!-- /login -->
+<p th:if="${session.user} != null" 
+  th:text="${session.user.userId} + '님 반갑습니다.'"></p>
+
+<p th:unless="${session.user} != null">
+  /login으로 로그인되어 있지 않습니다.
+</p>
+
+<!-- /signin -->
+<p th:if="${session.member} != null" 
+  th:text="${session.member.userId} + '님 반갑습니다.'"></p>
+
+<p th:unless="${session.member} != null">
+  /signin으로 로그인되어 있지 않습니다.
+</p>

@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+
+<form action="/join" method="post">
+  ID : <input type="text" name="userId"> <br>
+  PW : <input type="password" name="userPw"> <br>
+  NAME : <input type="text" name="userName"> <br>
+  <input type="submit" value="회원가입">
+</form>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+	//                      속성 선택자
+	const btn = document.querySelector("[type=submit]");
+	btn.addEventListener("click", ( event ) => {
+		event.preventDefault(); // 기본 기능 중지
+		// ajax 4가지.. axios 선택
+		const formData = new FormData();
+		
+		const userId = document.querySelector("[name=userId]").value;
+		formData.append("userId", userId);
+		const userPw = document.querySelector("[name=userPw]").value;
+		formData.append("userPw", userPw);
+		const userName = document.querySelector("[name=userName]").value;
+		formData.append("userName", userName);
+		
+		const res = axios({
+			url: "/join",
+			method: "post", // Form Data
+			data: formData
+		});
+	});
+</script>
+
+
+
+
+

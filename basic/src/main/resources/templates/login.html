@@ -1,0 +1,56 @@
+<meta charset="utf-8">
+
+<form action="/login" method="post">
+  ID :
+  <input type="text" name="userId">
+  <br>
+  PW :
+  <input type="password" name="userPw">
+  <br>
+  <input type="submit" value="로그인">
+</form>
+
+<!-- Axios 라이브러리 가져오기 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+	/* type이 submit인 HTML 요소 찾아내기(가져오기) */
+	const btn = document.querySelector("[type=submit]");
+	
+	/* 위에서 가져온 btn에 클릭 이벤트 설정하기 */
+	btn.addEventListener("click", (event) => {
+		/* HTML 요소의 기본 기능 막아주기 */
+		event.preventDefault();
+		
+		/* POST 방식으로 데이터를 전달하기 위해서 */
+		/* FormData라는 객체를 생성하고 */
+		/* 사용자가 입력한 정보(데이터)를 FormData 객체에 추가 */
+		const formData = new FormData();
+		const userId = document.querySelector("[name=userId]").value;
+		formData.append("userId", userId);
+		const userPw = document.querySelector("[name=userPw]").value;
+		formData.append("userPw", userPw);
+		
+		// axios를 동작시키기 위한 함수 호출
+		// 호출하면서 요청할 주소, 요청방식, 요청데이터 설정
+		const res = axios({
+			url: "/login",
+			method: "post", // Form Data
+			data: formData
+		});
+		// 결과 제대로 나오지 않음 (비동기라서.. 마치 스레드)
+ 		// console.log(res);  
+		// axios로 요청 후 서버의 응답을 기다렸다가
+		// 응답결과에 따라 마무리 작업(후속조치)
+		// 사용법 : res.then(함수());
+		// function() {}  또는  () => {}  
+		res.then((data) => {
+			console.log(data.data);
+			alert(data.data.result);
+			if(data.data.code == 200) {
+				location = '/main';
+			} else {
+				location.reload();
+			}
+		});
+	});
+</script>
