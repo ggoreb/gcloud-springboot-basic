@@ -52,7 +52,6 @@ public class DBController {
 	@GetMapping("/jpa/night/{page}")
 	public List<NightPharmacy> jpaNight2(
 			@PathVariable("page") int page) {
-		
 		// Ascending 오름차순
 		Sort sort = Sort.by("roadAddress");
 		

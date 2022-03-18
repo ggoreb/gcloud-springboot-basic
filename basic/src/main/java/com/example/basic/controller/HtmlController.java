@@ -1,9 +1,10 @@
 package com.example.basic.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,6 +33,34 @@ public class HtmlController {
 	public String htmlNight(
 			@PathVariable int page,
 			Model model) {
+	  
+//	  File f = new File("c:/study/내꺼.txt");
+//	  try {
+//      f.createNewFile();
+//    } catch (IOException e1) {
+//      // TODO Auto-generated catch block
+//      e1.printStackTrace();
+//    }
+	  // 하드디스크 용량이 꽉 찼을때
+	  // 쓰기 권한이 없을때
+	  // C 드라이브가 존재하지 않을때
+	  // study 폴더가 존재하지 않을때
+
+	  // 라이브러리 개발자 throws
+	  // 라이브러리 사용 개발자 try - catch
+	    
+//	  List list = new ArrayList();
+//	  System.out.println(list.get(0));
+//	  
+//	  String s = null;
+//	  try {
+//	    s.length();
+//	  } catch(NullPointerException e) {
+//	    
+//	  }
+	  
+//	  ArrayIndexOutOfBounds
+	  
 		Sort sort = Sort.by(Sort.Direction.DESC, "id");
 		
 		List<Order> orders = new ArrayList<>();

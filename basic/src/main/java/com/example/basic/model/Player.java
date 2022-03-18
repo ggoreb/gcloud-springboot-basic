@@ -24,6 +24,7 @@ public class Player {
   
   @ManyToOne
   @JoinColumn(name = "TEAM_ID")
+//  @ToString.Exclude
   private Team team;
 
 }
