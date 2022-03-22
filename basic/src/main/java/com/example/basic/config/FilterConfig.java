@@ -13,7 +13,7 @@ public class FilterConfig {
   @Bean
   public FilterRegistrationBean<Filter> getFilterRegistrationBean() {
     FilterRegistrationBean<Filter> bean = new FilterRegistrationBean<>(new IPCheckFilter());
-    bean.addUrlPatterns("/visitor");
+    bean.addUrlPatterns("/visitor", "/main");
     return bean;
   }
 }

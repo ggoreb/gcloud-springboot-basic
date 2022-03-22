@@ -23,7 +23,7 @@ public class Player {
   private int age;
   
   @ManyToOne
-  @JoinColumn(name = "TEAM_ID")
+//  @JoinColumn(name = "TEAM_ID")
 //  @ToString.Exclude
   private Team team;
 
