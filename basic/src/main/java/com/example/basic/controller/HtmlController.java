@@ -28,6 +28,16 @@ import com.example.basic.vo.Any;
 public class HtmlController {
 	@Autowired
 	NightPharmacyRepository nightPharmacyRepository;
+	
+	@GetMapping("/html/kakao")
+  public String htmlKakao() {
+	  return "html/kakao";
+	}
+
+	@GetMapping("/html/naver")
+	public String htmlNaver() {
+	  return "html/naver";
+	}
 
 	@GetMapping("/html/night/{page}")
 	public String htmlNight(

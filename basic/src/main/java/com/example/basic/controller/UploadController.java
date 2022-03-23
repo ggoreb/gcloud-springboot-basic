@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.example.basic.model.FileAtch;
+import com.example.basic.repository.FileAtchRepository;
+
 @Controller
 public class UploadController {
+  @Autowired
+  FileAtchRepository fileAtchRepository;
+  
   @GetMapping("/upload1")
   public String upload1() {
     return "upload1";
@@ -72,6 +79,10 @@ public class UploadController {
         }
         
         try {
+          FileAtch fa = new FileAtch();
+          fa.setOriginalName(oName);
+          fileAtchRepository.save(fa);
+          
           mFile.transferTo(new File("c:/study/" + oName));
         } catch (IllegalStateException e) {
           e.printStackTrace();
