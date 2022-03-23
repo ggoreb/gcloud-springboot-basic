@@ -15,12 +15,23 @@
 		const res = axios({
 			url: "/getKakao",
 			method: "get",
-			params: {
-				"address": address // 마음대로 name 
-			}
+			params: { "address": address }
 		});
 		res.then((result) => {
 			console.log(result.data);
+			let code = "<select>";
+			// <option>주소</option>
+			
+			const documents = result.data.documents;
+			for(let document of documents) { // legacy of in forEach
+				const address_name = document.address_name;
+				const x = document.x;
+				const y = document.y;
+				code += `<option>${address_name} / ${y} / ${x}</option>`;
+			}
+			
+			code += "</select>";
+			document.querySelector("div").innerHTML = code;
 		});
 	});
 </script>
