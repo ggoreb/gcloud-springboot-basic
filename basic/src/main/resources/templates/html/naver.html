@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<input type="text">
+<button>실행</button>
+<div></div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  //                      속성 선택자
+  const btn = document.querySelector("button");
+  btn.addEventListener("click", ( event ) => {
+    event.preventDefault(); // 기본 기능 중지
+    
+    const text = document.querySelector("input").value;
+      
+    const res = axios({
+      url: "/getNaver",
+      method: "get",
+      params: { "text": text }
+    });
+    res.then((result) => {
+      console.log(result.data);
+      const message = result.data.message;
+      const res = message.result;
+      const translatedText = res.translatedText;
+      document.querySelector("div").innerHTML =
+    	  `<h1>${translatedText}</h1>`;
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
